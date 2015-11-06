@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Sistema para gerenciamento de rebanhos | {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+
+<h1>Bem vindo ao sistema de gerenciamento de rebanhos, para acessar os recursos utilize a barra de navegação acima! </h1>
+
+<h3>Tamanho total do rebanho até o momento: {{animais|length}}</h2>
+<h3>Número total de fêmeas no rebanho: {{femeas|length}}</h2>
+<h3>Número total de machos no rebanho: {{machos|length}}</h2>
+
+
+
+{% endblock row %}
+
+{% block extrajs %}
+<script type="text/javascript">
+  $('document').ready(function(){
+    $('#id_home').prop('class', 'active');
+  });
+</script>
+{% endblock extrajs%}

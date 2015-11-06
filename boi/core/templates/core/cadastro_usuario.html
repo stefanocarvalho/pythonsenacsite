@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block titulo %}
+Cadastro de usuario | {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+<div class="col-md-4 col-md-offset-4">
+	<h1>Faça seu cadastro</h1>
+	{% if menssagem %}
+		{{ menssagem }}
+	{% endif %}
+	<form action="" method="post" accept-charset="utf-8" enctype="multipart/data-form">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="id_first_name">Nome</label>
+			{{ user_form.first_name|add_class:"form-control"|attr:"required:required" }}
+		</div>
+		<div class="form-group">
+			<label for="id_last_name">Sobrenome</label>
+			{{ user_form.last_name|add_class:"form-control"|attr:"required:required" }}
+		</div>
+		<div class="form-group">
+			<label for="id_email">Email</label>
+			{{ user_form.email|add_class:"form-control"|attr:"required:required" }}
+		</div>
+		<div class="form-group">
+			<label for="id_username">Usuário</label>
+			{{ user_form.username|add_class:"form-control" }}
+		</div>
+		<div class="form-group">
+			<label for="id_password">Senha</label>
+			{{ user_form.password|add_class:"form-control"|attr:"type:password" }}
+		</div>
+		
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+	</form>
+</div>
+{% endblock row %}
+
+{% block extrajs %}
+<script type="text/javascript">
+  $('document').ready(function(){
+    $('#id_cadastrouser').prop('class', 'active');
+  });
+</script>
+{% endblock extrajs%}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Cadastro de animal | {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+
+<h1>Faça o cadastro do animal</h1>
+<div class="col-md-4 col-md-offset-4">
+
+<form action="" method="post" accept-charset="utf-8" enctype="multipart/data-form">
+
+{% csrf_token %}
+  <div class="form-group">
+    <label for="id_sexo">Sexo</label>
+    {{ animal_form.sexo|add_class:"form-control"|attr:"type:required:required"}}
+    {% if animal_form.sexo.errors %}
+      <div class="form-group">
+        <div class="alert alert-warning" role="alert">
+        {{ animal_form.sexo.errors }}
+        </div>
+      </div>
+      {% endif %}
+  </div>
+  <div class="form-group">
+    <label for="id_idade">Idade</label>
+    {{ animal_form.idade|add_class:"form-control"|attr:"type:required:required"}}
+    {% if animal_form.idade.errors %}
+    <div class="form-group">
+      <div class="alert alert-warning" role="alert">
+        {{ animal_form.idade.errors }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="form-group">
+    <label for="id_peso">Peso (kg)</label>
+    {{ animal_form.peso|add_class:"form-control"|attr:"type:required:required"}}
+    {% if animal_form.peso.errors %}
+    <div class="form-group">
+      <div class="alert alert-warning" role="alert">
+        {{ animal_form.peso.errors }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="form-group">
+    <label for="id_preco">Preço (R$)</label>
+    {{ animal_form.preco|add_class:"form-control"|attr:"type:required:required"}}
+    {% if animal_form.preco.errors %}
+    <div class="form-group">
+      <div class="alert alert-warning" role="alert">
+        {{ animal_form.preco.errors }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	  	<input type="button" class="btn btn-danger" name="cancel" value="Cancel" onclick="window.location='{% url 'core:index' %}' " />
+</form>
+</div>
+{% endblock row %}
+{% block extrajs %}
+<script type="text/javascript">
+  $('document').ready(function(){
+    $('#id_cadastro').prop('class', 'active');
+  });
+</script>
+{% endblock %}

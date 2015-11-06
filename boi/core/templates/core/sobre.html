@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Sobre | {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+<div class="col-md-12">
+<form action="" method="post" accept-charset="utf-8" enctype="multipart/data-form">
+	{% for s in sobre %}
+		<h1>{{s.titulo}}</h1>
+		<p>
+			{{s.descricao}}
+		</p>
+	{%endfor%}
+	
+</div>
+</form>
+	
+{% endblock row %}
+
+{% block extrajs %}
+<script type="text/javascript">
+  $('document').ready(function(){
+    $('#id_sobre').prop('class', 'active');
+  });
+</script>
+{% endblock %}

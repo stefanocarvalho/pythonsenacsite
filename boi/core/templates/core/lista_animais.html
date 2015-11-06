@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+	{% block titulo %}
+
+		Lista de Animais
+
+	{% endblock titulo %}
+
+{% block row %}
+	<h1>Animais:</h1>
+	<!--<table class="altrowstable" id="alternatecolor" border="5" style="width:50%"> -->
+	<table class="table table-stripped table-bordered" id="alternatecolor" cellspacing="0" width="100%">
+		<caption><h3>Meus Animais</h3></caption>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>SEXO</th>
+				<th>IDADE</th>
+				<th>PESO</th>
+				<th>PREÇO</th>
+				<th>DATA COMPRA</th>
+				<th colspan="2">AÇOES</th>
+
+			</tr>
+
+		</thead>
+		<tfoot>
+			<tr>
+				
+				<th>ID</th>
+				<th>SEXO</th>
+				<th>IDADE</th>
+				<th>PESO</th>
+				<th>PREÇO</th>
+				<th>DATA COMPRA</th>
+				<th colspan="2">AÇOES</th>
+
+			</tr>
+		</tfoot>
+		<tbody>
+			{% for a in animais  %}
+			<tr>
+				<td>{{a.id}}</td>
+				<td>{{a.sexo}}</td>
+				<td>{{a.idade}}</td>
+				<td>{{a.peso}}</td>
+				<td>{{a.preco}}</td>
+				<td>{{a.data_compra}}</td>
+				<td> <a href="{% url 'core:editaranimal' a.id %}">Editar</a> </td>
+				<td> <a href="{% url 'core:apagaranimal' a.id %}">Apagar</a> </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+
+
+{% endblock row %}
+
+{% block extrajs %}
+<script type="text/javascript">
+  $('document').ready(function(){
+    $('#id_lista').prop('class', 'active');
+  });
+</script>
+
+
+{% endblock %}
+
+
+<!--  The table code can be found here: http://www.textfixer/tutorials/css-tables.php#css-table03 -->
